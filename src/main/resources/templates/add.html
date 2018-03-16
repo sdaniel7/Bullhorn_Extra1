@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+
+<body>
+
+<form action="#" th:action="@{/process}" th:object="${message}" method="post" enctype="multipart/form-data">
+
+    <input type="hidden" th:field="*{id}" />
+
+    Name: <input type="text" th:field="*{sentby}" />
+    <span th:if="${#fields.hasErrors('sentby')}" th:errors="*{sentby}"></span> <br />
+
+    Date (MM/DD/YY): <input type="text" th:field="*{posteddate}" />
+    <span th:if="${#fields.hasErrors('posteddate')}" th:erors="*{posteddate}"></span> <br />
+
+    Message: <textarea rows="3" cols="50" th:field="*{content}" />
+    <span th:if="${#fields.hasErrors('content')}" th:errors="*{content}"></span> <br />
+
+    Add an image: <input type="file" name="file" /><br /><br />
+
+    <input type="submit" value="Submit" />
+
+</form>
+
+</body>
+
+</html>
